@@ -1,15 +1,5 @@
 <script>
-	import Header from './Header.svelte';
 	import '../app.css';
 </script>
 
-<div>
-	<main>
-		<Header />
-		<slot />
-	</main>
-
-	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
-	</footer>
-</div>
+<slot />

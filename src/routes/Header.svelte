@@ -1,130 +1,50 @@
 <script>
-	import { page } from '$app/stores';
-	import logo from '$lib/images/svelte-logo.svg';
-	import github from '$lib/images/github.svg';
+	import { onMount } from 'svelte';
+
+	/**
+	 * @type {any[]}
+	 */
+	export let sections;
+	let activeLink = '';
+
+	function handleScroll() {
+		sections.forEach((section) => {
+			const element = document.getElementById(section.id);
+			const sectionTop = element?.offsetTop ?? 0;
+			if (window.scrollY >= sectionTop - 200) {
+				activeLink = section.id;
+			}
+		});
+	}
+
+	onMount(() => {
+		window.addEventListener('scroll', handleScroll);
+		handleScroll();
+
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
+	});
 </script>
 
-<header class="fixed top-0 bg-white z-30 w-full h-12">
-	<div class="corner">
-		<a href="https://kit.svelte.dev">
-			<img src={logo} alt="SvelteKit" />
-		</a>
+<nav
+	class="fixed z-50 top-0 h-12 flex w-screen border-t-8 border-gray-700 justify-stretch md:justify-end right-0 *:bg-gray-700"
+>
+	<div
+		class="hidden md:inline-block aspect-square h-full"
+		style="clip-path: polygon(0% 0%, 100% 0%, 100% 100%);"
+	></div>
+	<div class="flex items-center h-full justify-around w-full md:w-auto">
+		{#each sections as section}
+			<a
+				href={`#${section.id}`}
+				class=" first:font-black py-2 px-4 {activeLink === section.id
+					? 'text-purple-400 underline underline-offset-2'
+					: 'text-gray-200'}"
+			>
+				{section.label}
+			</a>
+		{/each}
 	</div>
-
-	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
-		<ul>
-			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-				<a href="/">Home</a>
-			</li>
-			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-				<a href="/about">About</a>
-			</li>
-			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
-				<a href="/sverdle">Sverdle</a>
-			</li>
-		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
-	</nav>
-
-	<div class="corner">
-		<a href="https://github.com/sveltejs/kit">
-			<!--img src={github} alt="GitHub" /-->
-			light/dark toggle here
-		</a>
-	</div>
-</header>
-
-<style>
-	header {
-		display: flex;
-		justify-content: space-between;
-	}
-
-	.corner {
-		width: 3em;
-		height: 3em;
-	}
-
-	.corner a {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-	}
-
-	.corner img {
-		width: 2em;
-		height: 2em;
-		object-fit: contain;
-	}
-
-	nav {
-		display: flex;
-		justify-content: center;
-		--background: rgba(255, 255, 255, 0.7);
-	}
-
-	svg {
-		width: 2em;
-		height: 3em;
-		display: block;
-	}
-
-	path {
-		fill: var(--background);
-	}
-
-	ul {
-		position: relative;
-		padding: 0;
-		margin: 0;
-		height: 3em;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		list-style: none;
-		background: var(--background);
-		background-size: contain;
-	}
-
-	li {
-		position: relative;
-		height: 100%;
-	}
-
-	li[aria-current='page']::before {
-		--size: 6px;
-		content: '';
-		width: 0;
-		height: 0;
-		position: absolute;
-		top: 0;
-		left: calc(50% - var(--size));
-		border: var(--size) solid transparent;
-		border-top: var(--size) solid var(--color-theme-1);
-	}
-
-	nav a {
-		display: flex;
-		height: 100%;
-		align-items: center;
-		padding: 0 0.5rem;
-		color: var(--color-text);
-		font-weight: 700;
-		font-size: 0.8rem;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		text-decoration: none;
-		transition: color 0.2s linear;
-	}
-
-	a:hover {
-		color: var(--color-theme-1);
-	}
-</style>
+	<div class="md:px-4"></div>
+</nav>

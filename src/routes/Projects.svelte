@@ -3,6 +3,7 @@
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 
 	export let id;
+	import TempImage from '$lib/images/portfolio.png';
 
 	import { onMount, onDestroy } from 'svelte';
 
@@ -89,6 +90,7 @@
 			{#each { length: 7 } as _, i}
 				<ProjectCard details={i} />
 			{/each}
+			<img src={TempImage} alt="" srcset="" />
 		</div>
 	</div>
 </section>

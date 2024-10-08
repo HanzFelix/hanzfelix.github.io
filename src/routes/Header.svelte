@@ -28,17 +28,16 @@
 </script>
 
 <nav
-	class="fixed z-50 top-0 h-12 flex w-screen border-t-8 border-gray-700 justify-stretch md:justify-end right-0 *:bg-gray-700"
+	class="fixed right-0 top-0 z-50 flex h-12 w-screen justify-stretch border-t-8 border-gray-700 md:justify-end"
 >
 	<div
-		class="hidden md:inline-block aspect-square h-full"
-		style="clip-path: polygon(0% 0%, 100% 0%, 100% 100%);"
+		class="hidden aspect-square h-full bg-gradient-to-bl from-gray-700 from-50% to-transparent to-50% md:inline-block"
 	></div>
-	<div class="flex items-center h-full justify-around w-full md:w-auto">
+	<div class="flex h-full w-full items-center justify-around bg-gray-700 md:w-auto">
 		{#each sections as section}
 			<a
 				href={`#${section.id}`}
-				class=" first:font-black py-2 px-4 {activeLink === section.id
+				class=" px-4 py-2 first:font-black {activeLink === section.id
 					? 'text-purple-400 underline underline-offset-2'
 					: 'text-gray-200'}"
 			>
@@ -46,5 +45,5 @@
 			</a>
 		{/each}
 	</div>
-	<div class="md:px-4"></div>
+	<div class="bg-gray-700 md:px-4"></div>
 </nav>

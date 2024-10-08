@@ -2,24 +2,25 @@
 	export let id;
 </script>
 
-<section class="bg-gray-200 flex items-center" {id}>
+<section class="flex items-center bg-gray-200" {id}>
 	<div
-		class="container mx-auto px-8 py-12 flex-col-reverse md:flex-row flex items-stretch md:items-center gap-8 h-full border-2 border-black"
+		class="container mx-auto flex h-full flex-col-reverse items-stretch justify-between gap-8 border-2 border-black px-8 py-12 md:flex-row md:items-center"
 	>
 		<div class="">
-			<h1 class="font-black md:text-6xl text-5xl mb-2">
-				I'm
-				<span class="whitespace-nowrap">XI˥ƎℲ ZNVH</span>
+			<h1 class="mb-2 flex text-5xl font-black md:text-6xl">
+				I'm&nbsp;
+				<span
+					class="rotate-180 transform whitespace-nowrap text-center"
+					style="writing-mode: horizontal-tb;"
+				>
+					XIℸƎℲ ZNVH
+				</span>
 			</h1>
-			<p class="border-black border">
-				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur optio voluptatibus ex
-				obcaecati harum, rerum distinctio quam deleniti totam eos qui culpa impedit unde ipsam
-				nesciunt. Doloribus voluptates odit hic?
-			</p>
+			<p>But this portfolio is still under construction.</p>
 		</div>
 		<img
 			src="https://placehold.co/300x400/777777/FFF"
-			class="w-full aspect-video md:aspect-auto md:h-auto object-cover md:w-72"
+			class="aspect-video w-full object-cover md:aspect-auto md:h-auto md:w-72"
 			alt=""
 			style="clip-path: polygon(10% 0%, 100% 0%, 100% 90%, 90% 100%, 0% 100%, 0% 10%);"
 		/>

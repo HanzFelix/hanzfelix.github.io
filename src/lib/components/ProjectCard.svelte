@@ -2,13 +2,22 @@
 	export let details;
 </script>
 
-<div class="border-gray-700 w-full mb-4 border-2 bg-gray-50">
+<div class="mb-4 w-full border-4 border-gray-700 bg-gray-50">
 	<div
-		class="aspect-video object-cover w-full bg-[url('https://placehold.co/400x300/CCCCCC/777777')] bg-center bg-cover"
+		class="aspect-video w-full bg-[url('https://placehold.co/400x300/CCCCCC/777777')] bg-cover bg-center object-cover"
 	>
-		<span class="relative z-20 top-0 right-0">Academic Project {details}</span>
+		<div class="z-20 float-end box-border flex h-6">
+			<div
+				class="aspect-square h-full bg-gradient-to-bl from-gray-700 from-50% to-transparent to-50%"
+			></div>
+			<span
+				class=" whitespace-nowrap border-gray-700 bg-gray-700 pr-1 text-sm uppercase text-gray-300"
+			>
+				Personal Project {details}
+			</span>
+		</div>
 	</div>
-	<h3 class="bg-gray-700 text-gray-50 text-2xl px-4 py-1">Lorem Ipsum</h3>
+	<h3 class="bg-gray-700 px-4 py-1 text-xl text-gray-50">Lorem Ipsum</h3>
 	<div class="p-4">
 		<div></div>
 		<p class="text-stone-700">

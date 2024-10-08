@@ -10,7 +10,7 @@
 	const sections = [
 		{ id: 'hello', label: 'HANZ' },
 		{ id: 'about', label: 'About' },
-		{ id: 'experience', label: 'Experience' },
+		/*{ id: 'experience', label: 'Experience' },*/
 		{ id: 'projects', label: 'Projects' },
 		{ id: 'contact', label: 'Contact' }
 	];
@@ -25,7 +25,7 @@
 	<Hello id={sections[0].id} />
 	<About id={sections[1].id} />
 	<!--Experience /-->
-	<Projects id={sections[3].id} />
-	<!--Contact id={sections[4].id} /-->
+	<Projects id={sections[2].id} />
+	<Contact id={sections[3].id} />
 </main>
 <Footer />

@@ -30,7 +30,7 @@
 	class="fixed right-0 top-0 z-50 flex h-12 w-screen justify-stretch border-t-8 border-gray-700 md:justify-end"
 >
 	<div
-		class="hidden aspect-square h-full bg-gradient-to-bl from-gray-700 from-50% to-transparent to-50% md:inline-block"
+		class="hidden aspect-square h-full bg-linear-to-bl from-gray-700 from-50% to-transparent to-50% md:inline-block"
 	></div>
 	<div class="flex h-full w-full items-center justify-around bg-gray-700 md:w-auto">
 		{#each sections as section}

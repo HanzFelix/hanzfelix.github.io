@@ -9,7 +9,7 @@
 	>
 		<div class="z-20 float-end box-border flex h-6">
 			<div
-				class="aspect-square h-full bg-gradient-to-bl from-gray-700 from-50% to-transparent to-50%"
+				class="aspect-square h-full bg-linear-to-bl from-gray-700 from-50% to-transparent to-50%"
 			></div>
 			<span
 				class=" whitespace-nowrap border-gray-700 bg-gray-700 pr-1 text-sm uppercase text-gray-300"

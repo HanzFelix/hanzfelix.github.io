@@ -1,14 +1,17 @@
 <script>
+	import { run } from 'svelte/legacy';
+
 	/* eslint-disable  @typescript-eslint/no-explicit-any */
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 
-	export let id;
 	import TempImage from '$lib/images/portfolio.png';
 
 	import { onMount, onDestroy } from 'svelte';
+	/** @type {{id: any}} */
+	let { id } = $props();
 
 	let grids = [];
-	let masonryElement;
+	let masonryElement = $state();
 
 	export const refreshLayout = async () => {
 		grids.forEach(async (grid) => {
@@ -74,9 +77,11 @@
 		}
 	});
 
-	$: if (masonryElement) {
-		calcGrid([masonryElement]);
-	}
+	run(() => {
+		if (masonryElement) {
+			calcGrid([masonryElement]);
+		}
+	});
 </script>
 
 <section class="flex items-center bg-gray-200" {id}>

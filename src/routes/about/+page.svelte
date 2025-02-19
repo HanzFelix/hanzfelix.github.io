@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 
-	let activeLink = 'home';
+	let activeLink = $state('home');
 
 	const sections = [
 		{ id: 'home', label: 'Home' },

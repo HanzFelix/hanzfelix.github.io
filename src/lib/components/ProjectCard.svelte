@@ -1,5 +1,6 @@
 <script>
-	export let details;
+	/** @type {{details: any}} */
+	let { details } = $props();
 </script>
 
 <div class="mb-4 w-full border-4 border-gray-700 bg-gray-50">

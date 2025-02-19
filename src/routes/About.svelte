@@ -1,5 +1,6 @@
 <script>
-	export let id;
+	/** @type {{id: any}} */
+	let { id } = $props();
 </script>
 
 <section class=" flex items-center bg-gray-300" {id}>

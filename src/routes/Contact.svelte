@@ -1,5 +1,6 @@
 <script>
-	export let id;
+	/** @type {{id: any}} */
+	let { id } = $props();
 	//sendgrid? mailgun? staticforms.xyz? serverless email functions
 </script>
 

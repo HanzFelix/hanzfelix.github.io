@@ -1,42 +1,47 @@
 <script>
+	import { run, preventDefault } from 'svelte/legacy';
+
 	import { confetti } from '@neoconfetti/svelte';
 	import { enhance } from '$app/forms';
 
 	import { reduced_motion } from './reduced-motion';
 
-	/** @type {import('./$types').PageData} */
-	export let data;
+	
 
-	/** @type {import('./$types').ActionData} */
-	export let form;
+	
+	/** @type {{data: import('./$types').PageData, form: import('./$types').ActionData}} */
+	let { data, form = $bindable() } = $props();
 
 	/** Whether or not the user has won */
-	$: won = data.answers.at(-1) === 'xxxxx';
+	let won = $derived(data.answers.at(-1) === 'xxxxx');
 
 	/** The index of the current guess */
-	$: i = won ? -1 : data.answers.length;
+	let i = $derived(won ? -1 : data.answers.length);
 
 	/** The current guess */
-	$: currentGuess = data.guesses[i] || '';
+	let currentGuess;
+	run(() => {
+		currentGuess = data.guesses[i] || '';
+	});
 
 	/** Whether the current guess can be submitted */
-	$: submittable = currentGuess.length === 5;
+	let submittable = $derived(currentGuess.length === 5);
 
 	/**
 	 * A map of classnames for all letters that have been guessed,
 	 * used for styling the keyboard
 	 * @type {Record<string, 'exact' | 'close' | 'missing'>}
 	 */
-	let classnames;
+	let classnames = $state();
 
 	/**
 	 * A map of descriptions for all letters that have been guessed,
 	 * used for adding text for assistive technology (e.g. screen readers)
 	 * @type {Record<string, string>}
 	 */
-	let description;
+	let description = $state();
 
-	$: {
+	run(() => {
 		classnames = {};
 		description = {};
 
@@ -55,7 +60,7 @@
 				}
 			}
 		});
-	}
+	});
 
 	/**
 	 * Modify the game state without making a trip to the server,
@@ -89,7 +94,7 @@
 	}
 </script>
 
-<svelte:window on:keydown={keydown} />
+<svelte:window onkeydown={keydown} />
 
 <svelte:head>
 	<title>Sverdle</title>
@@ -156,7 +161,7 @@
 				<button data-key="enter" class:selected={submittable} disabled={!submittable}>enter</button>
 
 				<button
-					on:click|preventDefault={update}
+					onclick={preventDefault(update)}
 					data-key="backspace"
 					formaction="?/update"
 					name="key"
@@ -169,7 +174,7 @@
 					<div class="row">
 						{#each row as letter}
 							<button
-								on:click|preventDefault={update}
+								onclick={preventDefault(update)}
 								data-key={letter}
 								class={classnames[letter]}
 								disabled={submittable}

@@ -1,11 +1,10 @@
 <script>
 	import { onMount } from 'svelte';
 
-	/**
-	 * @type {any[]}
-	 */
-	export let sections;
-	let activeLink = '';
+	
+	/** @type {{sections: any[]}} */
+	let { sections } = $props();
+	let activeLink = $state('');
 
 	function handleScroll() {
 		sections.forEach((section) => {

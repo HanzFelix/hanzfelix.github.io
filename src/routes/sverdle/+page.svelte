@@ -6,9 +6,6 @@
 
 	import { reduced_motion } from './reduced-motion';
 
-	
-
-	
 	/** @type {{data: import('./$types').PageData, form: import('./$types').ActionData}} */
 	let { data, form = $bindable() } = $props();
 

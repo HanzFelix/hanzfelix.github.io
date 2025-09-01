@@ -1,19 +1,25 @@
 <script>
 	import { onMount } from 'svelte';
 
-	
-	/** @type {{sections: any[]}} */
 	let { sections } = $props();
 	let activeLink = $state('');
 
 	function handleScroll() {
+		for (const [id, section] of Object.entries(sections)) {
+			const element = document.getElementById(id);
+			const sectionTop = element?.offsetTop ?? 0;
+			if (window.scrollY >= sectionTop - 200) {
+				activeLink = id;
+			}
+		}
+		/*
 		sections.forEach((section) => {
 			const element = document.getElementById(section.id);
 			const sectionTop = element?.offsetTop ?? 0;
 			if (window.scrollY >= sectionTop - 200) {
 				activeLink = section.id;
 			}
-		});
+		});*/
 	}
 
 	onMount(() => {
@@ -27,20 +33,20 @@
 </script>
 
 <nav
-	class="fixed right-0 top-0 z-50 flex h-12 w-screen justify-stretch border-t-8 border-gray-700 md:justify-end"
+	class="fixed top-0 right-0 z-50 flex h-12 w-screen justify-stretch border-t-8 border-gray-700 md:justify-end"
 >
 	<div
 		class="hidden aspect-square h-full bg-linear-to-bl from-gray-700 from-50% to-transparent to-50% md:inline-block"
 	></div>
 	<div class="flex h-full w-full items-center justify-around bg-gray-700 md:w-auto">
-		{#each sections as section}
+		{#each Object.entries(sections) as [key, value]}
 			<a
-				href={`#${section.id}`}
-				class=" px-4 py-2 first:font-black {activeLink === section.id
+				href={`#${key}`}
+				class=" px-4 py-2 first:font-black {activeLink === key
 					? 'text-purple-400 underline underline-offset-2'
 					: 'text-gray-200'}"
 			>
-				{section.label}
+				{value}
 			</a>
 		{/each}
 	</div>

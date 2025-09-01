@@ -1,19 +1,22 @@
-<script>
-	import { run } from 'svelte/legacy';
-
-	/* eslint-disable  @typescript-eslint/no-explicit-any */
+<script lang="ts">
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
-
 	import TempImage from '$lib/images/portfolio.png';
-
 	import { onMount, onDestroy } from 'svelte';
-	/** @type {{id: any}} */
-	let { id } = $props();
 
-	let grids = [];
-	let masonryElement = $state();
+	let { id }: { id: string } = $props();
 
-	export const refreshLayout = async () => {
+	interface GridInfo {
+		_el: HTMLElement;
+		gap: number;
+		items: HTMLElement[];
+		ncol: number;
+		mod: number;
+	}
+
+	let grids: GridInfo[] = [];
+	let masonryElement: HTMLElement = $state();
+
+	async function refreshLayout() {
 		grids.forEach(async (grid) => {
 			/* get the post relayout number of columns */
 			let ncol = getComputedStyle(grid._el).gridTemplateColumns.split(' ').length;
@@ -22,7 +25,7 @@
 				let new_h = c.getBoundingClientRect().height;
 
 				if (new_h !== +c.dataset.h) {
-					c.dataset.h = new_h;
+					c.dataset.h = String(new_h);
 					grid.mod++;
 				}
 			});
@@ -47,16 +50,19 @@
 				grid.mod = 0;
 			}
 		});
-	};
+	}
 
-	const calcGrid = async (_masonryArr) => {
+	async function calcGrid(_masonryArr: HTMLElement[]) {
 		if (_masonryArr.length && getComputedStyle(_masonryArr[0]).gridTemplateRows !== 'masonry') {
 			grids = _masonryArr.map((grid) => {
 				return {
 					_el: grid,
-					gap: parseFloat(getComputedStyle(grid).gridRowGap),
+					gap: parseFloat(getComputedStyle(grid).rowGap),
 					items: [...grid.childNodes].filter(
-						(c) => c.nodeType === 1 && +getComputedStyle(c).gridColumnEnd !== -1
+						(c): c is HTMLElement =>
+							c.nodeType === 1 &&
+							c instanceof HTMLElement &&
+							+getComputedStyle(c).gridColumnEnd !== -1
 					),
 					ncol: 0,
 					mod: 0
@@ -64,9 +70,9 @@
 			});
 			refreshLayout(); /* initial load */
 		}
-	};
+	}
 
-	let _window;
+	let _window: Window;
 	onMount(() => {
 		_window = window;
 		_window.addEventListener('resize', refreshLayout, false); /* on resize */
@@ -77,7 +83,7 @@
 		}
 	});
 
-	run(() => {
+	$effect.pre(() => {
 		if (masonryElement) {
 			calcGrid([masonryElement]);
 		}
@@ -89,7 +95,7 @@
 		<h2 class="text-4xl">Projects</h2>
 		<div
 			bind:this={masonryElement}
-			class=" mt-12 grid grid-cols-1 gap-4 *:self-start lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4"
+			class=" mt-12 grid grid-cols-1 gap-4 *:self-start sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
 			style="grid-template-rows: masonry;"
 		>
 			{#each { length: 7 } as _, i}

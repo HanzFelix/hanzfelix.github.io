@@ -88,6 +88,19 @@
 			calcGrid([masonryElement]);
 		}
 	});
+
+	let projects = $state([]);
+	onMount(async () => {
+		try {
+			const response = await fetch(
+				'https://second-haft.tumulakhanz.workers.dev/api/portfolio/projects'
+			);
+			const result = await response.json();
+			projects = result.data.projects;
+		} catch (error) {
+			console.log(error);
+		}
+	});
 </script>
 
 <section class="flex items-center bg-gray-200" {id}>
@@ -98,10 +111,9 @@
 			class=" mt-12 grid grid-cols-1 gap-4 *:self-start sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
 			style="grid-template-rows: masonry;"
 		>
-			{#each { length: 7 } as _, i}
-				<ProjectCard details={i} />
+			{#each projects as project}
+				<ProjectCard details={project} />
 			{/each}
-			<img src={TempImage} alt="" srcset="" />
 		</div>
 	</div>
 </section>

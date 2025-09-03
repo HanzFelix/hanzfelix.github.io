@@ -21,7 +21,7 @@
 	<meta name="description" content="Portfolio website of Hanz Felix" />
 </svelte:head>
 <Header {sections} />
-<main class="border-x-8 border-gray-700 text-base *:min-h-screen *:py-12 md:text-lg">
+<main class="border-x-8 border-gray-700 text-gray-900 text-base *:min-h-screen *:py-12 md:text-lg">
 	<Hello id="hello" />
 	<About id="about" />
 	<Experience id="experience" />

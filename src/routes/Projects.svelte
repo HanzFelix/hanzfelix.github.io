@@ -95,9 +95,8 @@
 			const response = await fetch(
 				'https://second-haft.tumulakhanz.workers.dev/api/portfolio/projects'
 			);
-			const data = await response.json();
-			console.log(data);
-			projects = data;
+			const result = await response.json();
+			projects = result.data.projects;
 		} catch (error) {
 			console.log(error);
 		}

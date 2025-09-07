@@ -103,8 +103,8 @@
 	});
 </script>
 
-<section class="flex items-center bg-gray-200" {id}>
-	<div class="container mx-auto px-8">
+<section class="flex" {id}>
+	<div class="container mx-auto px-8 py-12">
 		<h2 class="text-4xl">Projects</h2>
 		<div
 			bind:this={masonryElement}

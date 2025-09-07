@@ -3,7 +3,7 @@
 	let { id } = $props();
 </script>
 
-<section class="flex items-center bg-gray-200" {id}>
+<section class="flex items-center" {id}>
 	<div
 		class="container mx-auto flex h-full flex-col-reverse items-stretch justify-between gap-8 border-2 border-black px-8 py-12 md:flex-row md:items-center"
 	>

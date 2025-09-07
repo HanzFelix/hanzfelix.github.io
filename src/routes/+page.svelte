@@ -21,11 +21,13 @@
 	<meta name="description" content="Portfolio website of Hanz Felix" />
 </svelte:head>
 <Header {sections} />
-<main class="border-x-8 border-gray-700 text-gray-900 text-base *:min-h-screen *:py-12 md:text-lg">
+<main
+	class="border-x-8 border-gray-700 text-gray-800 text-base *:not-last:min-h-screen *:not-last:py-12 md:text-lg *:odd:bg-gray-100 *:even:bg-gray-200"
+>
 	<Hello id="hello" />
 	<About id="about" />
 	<Experience id="experience" />
 	<Projects id="projects" />
 	<Contact id="contact" />
+	<Footer />
 </main>
-<Footer />

@@ -10,7 +10,7 @@
 	const sections = {
 		hello: 'HANZ',
 		about: 'About',
-		experience: 'Experience',
+		experience: 'CV',
 		projects: 'Projects',
 		contact: 'Contact'
 	};

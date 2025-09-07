@@ -1,6 +1,5 @@
 <script lang="ts">
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
-	import TempImage from '$lib/images/portfolio.png';
 	import { onMount, onDestroy } from 'svelte';
 
 	let { id }: { id: string } = $props();
@@ -95,8 +94,10 @@
 			const response = await fetch(
 				'https://second-haft.tumulakhanz.workers.dev/api/portfolio/projects'
 			);
-			const result = await response.json();
-			projects = result.data.projects;
+			if (response.ok) {
+				const result = await response.json();
+				projects = result.data.projects;
+			}
 		} catch (error) {
 			console.log(error);
 		}

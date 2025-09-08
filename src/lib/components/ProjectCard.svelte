@@ -3,7 +3,7 @@
 </script>
 
 <div
-	class="mb-4 w-full border-4 border-gray-700 bg-gray-50 shadow-lg hover:shadow-gray-500 transition-all duration-200 hover:-translate-y-2 group"
+	class="mb-4 border-4 border-gray-700 bg-gray-50 shadow-lg hover:shadow-gray-500 transition-[transform, shadow] duration-200 hover:-translate-y-2 group"
 >
 	<div
 		style={`background-image: url('${project.image_url}');`}

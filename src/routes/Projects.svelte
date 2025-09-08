@@ -82,12 +82,6 @@
 		}
 	});
 
-	$effect.pre(() => {
-		if (masonryElement) {
-			calcGrid([masonryElement]);
-		}
-	});
-
 	let projects = $state([]);
 	onMount(async () => {
 		try {
@@ -102,14 +96,21 @@
 			console.log(error);
 		}
 	});
+
+	$effect(() => {
+		if (projects) {
+			// update if items are changed
+			calcGrid([masonryElement]);
+		}
+	});
 </script>
 
 <section class="flex" {id}>
-	<div class="container mx-auto px-8 py-12">
-		<h2 class="text-4xl">Projects</h2>
+	<div class="container mx-auto px-4 py-12">
+		<h2 class="text-4xl px-4">Projects</h2>
 		<div
 			bind:this={masonryElement}
-			class=" mt-12 grid grid-cols-1 gap-4 *:self-start sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
+			class=" mt-12 grid grid-cols-1 gap-2 sm:gap-4 *:self-start sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
 			style="grid-template-rows: masonry;"
 		>
 			{#each projects as project}

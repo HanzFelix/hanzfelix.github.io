@@ -116,10 +116,10 @@
 		class="container mx-auto flex h-full flex-col-reverse gap-8 z-10 px-2 md:px-8 py-4 md:flex-row"
 	>
 		<div
-			class=" aspect-video backdrop-blur-xs md:mx-0 object-cover md:aspect-auto md:w-sm backdrop-hue-rotate-[220deg] backdrop-saturate-200 backdrop-opacity-70 flex items-center justify-center rounded-2xl"
+			class="hidden aspect-video backdrop-blur-xs md:mx-0 object-cover md:aspect-auto md:w-sm backdrop-hue-rotate-[220deg] backdrop-saturate-200 backdrop-opacity-70 md:flex items-center justify-center rounded-2xl"
 			style="box-shadow: 
     0 8px 32px rgba(128, 0, 255, 0.1),
-    inset 0 1px 0 rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(0, 0, 196, 0.2),
     inset 0 -1px 0 rgba(0, 0, 0, 0.1),
     inset 0 0 20px 10px rgba(64, 64, 255, 0.1);"
 		>
@@ -133,21 +133,38 @@
 					} else resumeCanvas();
 				}}
 				><img
-					src="https://ik.imagekit.io/lugefi/portfolio/code_folder.png?updatedAt=1757337586677"
+					src="https://ik.imagekit.io/lugefi/portfolio/code_folder.png"
 					class={`max-w-3xs transition-transform ${!isRunning ? 'saturate-0' : ''}`}
 					alt=""
 				/></button
 			>
 		</div>
 		<div
-			class="backdrop-blur-sm basis-full px-6 py-8 md:px-8 w-full bg-white/20 rounded-2xl border border-gray-50/30 md:pt-12"
+			class="backdrop-blur-xs basis-full px-6 py-8 md:px-8 w-full bg-white/20 rounded-2xl border border-gray-50/30 md:pt-12"
 			style="box-shadow: 
     0 8px 32px rgba(128, 0, 255, 0.1),
-    inset 0 1px 0 rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(64, 0, 128, 0.2),
     inset 0 -1px 0 rgba(0, 0, 0, 0.1),
     inset 0 0 20px 10px rgba(128, 0, 255, 0.15);"
 		>
-			<h2 class="text-4xl">About Me</h2>
+			<div class="flex">
+				<h2 class="text-4xl basis-full">About Me</h2>
+				<button
+					aria-label="about"
+					class="inline md:hidden"
+					onclick={() => {
+						isManuallyPaused = !isManuallyPaused;
+						if (isRunning) {
+							pauseCanvas();
+						} else resumeCanvas();
+					}}
+					><img
+						src="https://ik.imagekit.io/lugefi/portfolio/code_folder.png"
+						class={`w-12 transition-transform ${!isRunning ? 'saturate-0' : ''}`}
+						alt=""
+					/></button
+				>
+			</div>
 			<ul class=" *:my-6">
 				<li>
 					Aspiring software developer with a strong background in programming languages and

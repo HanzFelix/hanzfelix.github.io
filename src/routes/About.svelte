@@ -101,6 +101,11 @@
 </script>
 
 <section class="flex items-center relative" {id}>
+	<div
+		class="absolute inline-flex -top-16 left-1/2 -translate-x-1/2 *:shadow-[-5px_-5px_10px_#FFFFFF88,_5px_5px_10px_#00000044] *:inset-shadow-[5px_5px_10px_-2px_#0000000A] *:active:inset-shadow-[-5px_-5px_10px_#FFFFFF88,_5px_5px_10px_#00000044] *:active:shadow-none"
+	>
+		<a href={`#${id}`} class="text-2xl px-2 rounded-full animate-pulse text-cyan-800">↓</a>
+	</div>
 	<div class="absolute top-0 left-0 w-full h-full">
 		<canvas
 			use:inview={{}}

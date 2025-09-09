@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Signika&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Figtree&display=swap');
 @import 'tailwindcss';
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
@@ -20,5 +20,5 @@
 
 html {
 	scroll-behavior: smooth;
-	font-family: Signika, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-family: Figtree, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

@@ -56,9 +56,11 @@
 								<p class="text-sm bg-slate-600 rounded-sm text-gray-300 px-2 -mx-2">
 									{formatDate(entry.date_start)} - {formatDate(entry.date_end) || 'Present'}
 								</p>
-								<h2 class="text-xl md:text-2xl mt-2">{entry.role || entry.degree}</h2>
-								<p class="text-sm text-gray-700">{entry.company || entry.institution}</p>
-								<p class="md:max-w-md text-justify mt-4">
+								<h2 class="text-xl text-gray-800 md:text-2xl mt-2 font-bold">
+									{entry.role || entry.degree}
+								</h2>
+								<p class="text-sm text-gray-500">{entry.company || entry.institution}</p>
+								<p class="md:max-w-md md:text-justify mt-4 text-slate-700">
 									{entry.description}
 								</p>
 							</div>

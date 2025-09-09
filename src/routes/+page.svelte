@@ -1,5 +1,4 @@
 <script>
-	import { onMount } from 'svelte';
 	import Header from './Header.svelte';
 	import Hello from './Hello.svelte';
 	import About from './About.svelte';
@@ -22,7 +21,7 @@
 </svelte:head>
 <Header {sections} />
 <main
-	class="border-x-8 border-gray-700 text-gray-800 text-base *:not-last:min-h-screen *:not-last:py-12 md:text-lg *:odd:bg-gray-100 *:even:bg-gray-200"
+	class="border-x-8 border-gray-700 text-gray-800 text-base *:first:min-h-svh *:not-last:not-first:min-h-screen *:not-last:py-12 md:text-lg *:even:bg-gray-100 *:odd:bg-gray-200"
 >
 	<Hello id="hello" />
 	<About id="about" />

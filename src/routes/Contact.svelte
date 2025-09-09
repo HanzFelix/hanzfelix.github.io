@@ -4,7 +4,11 @@
 	//sendgrid? mailgun? staticforms.xyz? serverless email functions
 </script>
 
-<section class="flex flex-col justify-center px-4" {id}>
+<section
+	class="flex flex-col justify-center px-4"
+	{id}
+	style="background: linear-gradient(to top, #e1e9ff 0%,var(--color-gray-200) 57%);"
+>
 	<div class="container mx-auto px-4 pt-6">
 		<h2 class="text-4xl">How about a message?</h2>
 		<p class="mt-2">Just fill up the form below and I'll try to respond as soon as possible.</p>

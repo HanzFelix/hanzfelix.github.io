@@ -1,4 +1,5 @@
 <script>
+	import FileIcon from '$lib/images/FileIcon.svelte';
 	import GithubIcon from '$lib/images/GithubIcon.svelte';
 	import LinkedinIcon from '$lib/images/LinkedinIcon.svelte';
 	import MailIcon from '$lib/images/MailIcon.svelte';
@@ -35,6 +36,12 @@
 				</a>
 				<a href="mailto:tumulakhanz@gmail.com" aria-label="mail">
 					<MailIcon class="w-8" />
+				</a>
+				<a
+					href="https://drive.google.com/file/d/1XDCcrPlaBH3MQZZH1dDFrLOD_pk4u09_/view?usp=drive_link"
+					aria-label="resume"
+				>
+					<FileIcon class="w-8" />
 				</a>
 			</div>
 		</div>

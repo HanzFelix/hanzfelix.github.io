@@ -1,13 +1,11 @@
 <script>
 	/** @type {{id: any}} */
 	let { id } = $props();
-	//sendgrid? mailgun? staticforms.xyz? serverless email functions
 </script>
 
 <section
-	class="flex flex-col justify-center px-4"
+	class="flex flex-col justify-center px-4 bg-gradient-to-t from-[#e1e9ff] odd:to-gray-200 even:to-gray-100 to-50%"
 	{id}
-	style="background: linear-gradient(to top, #e1e9ff 0%,var(--color-gray-200) 57%);"
 >
 	<div class="container mx-auto px-4 pt-6">
 		<h2 class="text-4xl">How about a message?</h2>

@@ -6,10 +6,12 @@
 	import Projects from './Projects.svelte';
 	import Contact from './Contact.svelte';
 	import Footer from './Footer.svelte';
+	import Skills from './Skills.svelte';
 	const sections = {
 		hello: 'HANZ',
-		about: 'About',
-		experience: 'CV',
+		/*about: 'About',*/
+		skills: 'Skills',
+		/*experience: 'CV',*/
 		projects: 'Projects',
 		contact: 'Contact'
 	};
@@ -25,6 +27,7 @@
 >
 	<Hello id="hello" />
 	<About id="about" />
+	<Skills id="skills" />
 	<Experience id="experience" />
 	<Projects id="projects" />
 	<Contact id="contact" />

@@ -37,12 +37,13 @@
 				grid.items.forEach((c) => c.style.removeProperty('margin-top'));
 				/* if we have more than one column */
 				if (grid.ncol > 1) {
+					// add delay to calculate after card transitions
+					await new Promise((resolve) => setTimeout(resolve, 300));
 					grid.items.slice(ncol).forEach((c, i) => {
 						let prev_fin =
 								grid.items[i].getBoundingClientRect().bottom /* bottom edge of item above */,
 							curr_ini = c.getBoundingClientRect().top; /* top edge of current item */
-
-						c.style.marginTop = `${prev_fin + grid.gap - curr_ini}px`;
+						c.style.marginTop = `${Math.min(grid.gap + prev_fin - curr_ini, 0)}px`;
 					});
 				}
 
@@ -74,13 +75,21 @@
 	let _window: Window;
 	onMount(() => {
 		_window = window;
-		_window.addEventListener('resize', refreshLayout, false); /* on resize */
+		_window.addEventListener('resize', debounce(refreshLayout, 300), false); /* on resize */
 	});
 	onDestroy(() => {
 		if (_window) {
-			_window.removeEventListener('resize', refreshLayout, false); /* on resize */
+			_window.removeEventListener('resize', debounce(refreshLayout, 300), false); /* on resize */
 		}
 	});
+
+	function debounce(func: Function, delay: number) {
+		let timeoutId: number;
+		return function (...args: any) {
+			clearTimeout(timeoutId);
+			timeoutId = setTimeout(() => func.apply(this, args), delay);
+		};
+	}
 
 	let projects = $state([]);
 	onMount(async () => {
@@ -110,7 +119,7 @@
 		<h2 class="text-4xl px-4">Projects</h2>
 		<div
 			bind:this={masonryElement}
-			class=" mt-12 grid grid-cols-1 gap-2 sm:gap-4 *:self-start sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
+			class="mt-12 grid grid-cols-1 gap-2 sm:gap-4 *:self-start sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
 			style="grid-template-rows: masonry;"
 		>
 			{#each projects as project}

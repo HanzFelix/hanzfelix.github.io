@@ -1,8 +1,9 @@
 <script lang="ts">
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import { onMount, onDestroy } from 'svelte';
+	import type { HTMLAttributes } from 'svelte/elements';
 
-	let { id }: { id: string } = $props();
+	let { ...rest }: HTMLAttributes<any> = $props();
 
 	interface GridInfo {
 		_el: HTMLElement;
@@ -114,7 +115,7 @@
 	});
 </script>
 
-<section class="flex" {id}>
+<section class="flex" {...rest}>
 	<div class="container mx-auto px-4 py-12">
 		<h2 class="text-4xl px-4">Projects</h2>
 		<div

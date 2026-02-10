@@ -1,11 +1,12 @@
-<script>
-	/** @type {{id: any}} */
-	let { id } = $props();
+<script lang="ts">
+	import type { HTMLAttributes } from 'svelte/elements';
+
+	let { ...rest }: HTMLAttributes<any> = $props();
 </script>
 
 <section
 	class="flex flex-col justify-center px-4 bg-gradient-to-t from-[#e1e9ff] odd:to-gray-200 even:to-gray-100 to-50%"
-	{id}
+	{...rest}
 >
 	<div class="container mx-auto px-4 pt-6">
 		<h2 class="text-4xl">How about a message?</h2>

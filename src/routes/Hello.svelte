@@ -1,13 +1,14 @@
-<script>
+<script lang="ts">
 	import FileIcon from '$lib/images/FileIcon.svelte';
 	import GithubIcon from '$lib/images/GithubIcon.svelte';
 	import LinkedinIcon from '$lib/images/LinkedinIcon.svelte';
 	import MailIcon from '$lib/images/MailIcon.svelte';
-	/** @type {{id: any}} */
-	let { id } = $props();
+	import type { HTMLAttributes } from 'svelte/elements';
+
+	let { ...rest }: HTMLAttributes<any> = $props();
 </script>
 
-<section class="flex items-center px-2" {id}>
+<section class="flex items-center px-2" {...rest}>
 	<div
 		class="rounded-4xl container mx-auto flex h-full flex-col-reverse items-stretch inset-shadow-[-5px_-5px_10px_#FFFFFF88,_5px_5px_10px_#00000044] justify-between gap-8 px-6 py-8 md:flex-row md:items-center"
 	>

@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { formatDate } from '$lib/utils';
 	import { onMount } from 'svelte';
+	import type { HTMLAttributes } from 'svelte/elements';
 
-	/** @type {{id: any}} */
-	let { id } = $props();
+	let { ...rest }: HTMLAttributes<any> = $props();
 
 	let cv = $state({ work_experience: [], education: [] });
 
@@ -30,7 +30,7 @@
 	});
 </script>
 
-<section {id} class="flex items-center">
+<section {...rest} class="flex items-center">
 	<div class="container mx-auto px-8 py-12">
 		<h2 class="text-4xl">Curriclum Vitae</h2>
 		<div class="relative">

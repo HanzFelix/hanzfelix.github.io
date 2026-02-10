@@ -1,5 +1,7 @@
 <script lang="ts">
-	let { id }: { id: string } = $props();
+	import type { HTMLAttributes } from 'svelte/elements';
+
+	let { ...rest }: HTMLAttributes<any> = $props();
 
 	const skills = [
 		{
@@ -161,7 +163,7 @@
 	];
 </script>
 
-<section class="flex items-center relative" {id}>
+<section class="flex items-center relative" {...rest}>
 	<div class="container mx-auto px-4 py-12">
 		<h2 class="text-4xl px-4">Core Skills</h2>
 		<div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 mt-12 gap-8 sm:gap-4">

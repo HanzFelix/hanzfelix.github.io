@@ -23,7 +23,7 @@
 </svelte:head>
 <Header {sections} />
 <main
-	class="border-x-8 border-gray-700 text-gray-800 text-base *:first:min-h-svh *:not-last:not-first:min-h-screen *:not-last:py-12 md:text-lg *:even:bg-gray-100 *:odd:bg-gray-200"
+	class="border-x-8 border-gray-700 text-gray-800 text-base *:first:min-h-svh *:not-last:not-first:min-h-screen *:not-last:py-12 *:even:bg-gray-100 *:odd:bg-gray-200 box-border"
 >
 	<Hello id="hello" />
 	<About id="about" />

@@ -3,7 +3,7 @@
 	import { onMount } from 'svelte';
 	import type { HTMLAttributes } from 'svelte/elements';
 
-	let { ...rest }: HTMLAttributes<any> = $props();
+	let { ...rest }: HTMLAttributes<HTMLDivElement> = $props();
 
 	let cv = $state({ work_experience: [], education: [] });
 
@@ -38,7 +38,7 @@
 				<div
 					class="flex flex-col gap-8 before:left-1 md:before:left-1/2 before:rounded-sm mt-12 before:absolute before:w-1 before:top-0 before:bg-cyan-700 before:h-full"
 				>
-					{#each Object.keys(cv) as section, i}
+					{#each Object.keys(cv) as section, i (i)}
 						{#if cv[section].length > 0}
 							<div class="md:text-center">
 								<h3
@@ -49,7 +49,7 @@
 							</div>
 						{/if}
 
-						{#each cv[section] as entry}
+						{#each cv[section] as entry (entry._id)}
 							<div
 								class="flex flex-col items-start px-6 md:w-1/2 md:odd:text-right md:odd:ml-1 md:even:ml-auto md:odd:items-end before:bg-cyan-700 before:rounded-xs before:w-3 before:h-3 before:absolute md:before:left-1/2 md:before:-mx-1 before:left-0 before:mt-1"
 							>

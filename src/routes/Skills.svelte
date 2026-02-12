@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { HTMLAttributes } from 'svelte/elements';
 
-	let { ...rest }: HTMLAttributes<any> = $props();
+	let { ...rest }: HTMLAttributes<HTMLDivElement> = $props();
 
 	const skills = [
 		{
@@ -167,11 +167,11 @@
 	<div class="container mx-auto px-4 py-12">
 		<h2 class="text-4xl px-4">Core Skills</h2>
 		<div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 mt-12 gap-8 sm:gap-4">
-			{#each skills as skill}
+			{#each skills as skill (skill.name)}
 				<div>
 					<h3 class="bg-cyan-800/25 px-4 mb-4 text-xl">{skill.name}</h3>
 					<div class="inline-flex gap-2 flex-wrap px-4">
-						{#each skill.languages as language}
+						{#each skill.languages as language (language.name)}
 							<div class="bg-gray-100 flex rounded-xl">
 								<div class="p-2 bg-cyan-700 rounded-md relative group">
 									<img
@@ -187,7 +187,7 @@
 									>
 								</div>
 								<div class="not-empty:p-2 flex gap-4">
-									{#each language.frameworks as framework}
+									{#each language.frameworks as framework (framework.name)}
 										<div class="relative group">
 											<img src={framework.image} height="36" width="36" alt={framework.name} />
 

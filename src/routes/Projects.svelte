@@ -1,9 +1,10 @@
 <script lang="ts">
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import { onMount, onDestroy } from 'svelte';
+	import type { ProjectDetails } from '$lib/types';
 	import type { HTMLAttributes } from 'svelte/elements';
 
-	let { ...rest }: HTMLAttributes<any> = $props();
+	let { ...rest }: HTMLAttributes<HTMLDivElement> = $props();
 
 	interface GridInfo {
 		_el: HTMLElement;
@@ -25,7 +26,7 @@
 				let new_h = c.getBoundingClientRect().height;
 
 				if (new_h !== +c.dataset.h) {
-					c.dataset.h = String(new_h);
+					c.dataset.h = `${new_h}`;
 					grid.mod++;
 				}
 			});
@@ -84,15 +85,15 @@
 		}
 	});
 
-	function debounce(func: Function, delay: number) {
+	function debounce(func: () => void, delay: number) {
 		let timeoutId: number;
-		return function (...args: any) {
+		return function () {
 			clearTimeout(timeoutId);
-			timeoutId = setTimeout(() => func.apply(this, args), delay);
+			timeoutId = setTimeout(() => func.apply(this), delay);
 		};
 	}
 
-	let projects = $state([]);
+	let projects: ProjectDetails[] = $state([]);
 	onMount(async () => {
 		try {
 			const response = await fetch(
@@ -123,7 +124,7 @@
 			class="mt-12 grid grid-cols-1 gap-2 sm:gap-4 *:self-start sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
 			style="grid-template-rows: masonry;"
 		>
-			{#each projects as project}
+			{#each projects as project (project.name)}
 				<ProjectCard details={project} />
 			{/each}
 		</div>

@@ -1,5 +1,7 @@
 <script lang="ts">
-	let { details: project } = $props();
+	import type { ProjectDetails } from '$lib/types';
+
+	let { details: project }: { details: ProjectDetails } = $props();
 </script>
 
 <div
@@ -26,7 +28,7 @@
 	<div class="flex flex-col gap-2 p-4">
 		<!--Tags-->
 		<ul class="flex gap-2 text-sm text-gray-100 *:rounded-sm *:bg-gray-500 *:px-2 flex-wrap">
-			{#each project.tags as { icon, name }}
+			{#each project.tags as { name } (name)}
 				<li>{name}</li>
 			{/each}
 		</ul>
@@ -38,9 +40,9 @@
 		<ul
 			class="text-sm text-gray-800 flex gap-2 *:not-first:before:content-['•'] *:not-first:before:mr-2 *:*:underline"
 		>
-			{#each project.links as { name, url }}
+			{#each project.links as { name, url } (url)}
 				<li>
-					<a href={url}>{name}</a>
+					<a href={url} rel="external">{name}</a>
 				</li>
 			{/each}
 		</ul>

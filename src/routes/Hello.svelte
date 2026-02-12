@@ -5,12 +5,12 @@
 	import MailIcon from '$lib/images/MailIcon.svelte';
 	import type { HTMLAttributes } from 'svelte/elements';
 
-	let { ...rest }: HTMLAttributes<any> = $props();
+	let { ...rest }: HTMLAttributes<HTMLDivElement> = $props();
 </script>
 
 <section class="flex items-center px-2" {...rest}>
 	<div
-		class="rounded-4xl container mx-auto flex h-full flex-col-reverse items-stretch inset-shadow-[-5px_-5px_10px_#FFFFFF88,_5px_5px_10px_#00000044] justify-between gap-8 px-6 py-8 md:flex-row md:items-center"
+		class="rounded-4xl container mx-auto flex h-full flex-col-reverse items-stretch inset-shadow-[-5px_-5px_10px_#FFFFFF88,5px_5px_10px_#00000044] justify-between gap-8 px-6 py-8 md:flex-row md:items-center"
 	>
 		<div class="">
 			<h1 class="mb-2 flex flex-wrap text-5xl font-black md:text-6xl select-none">
@@ -27,7 +27,7 @@
 			<p>Aspiring software engineer specializing in web development.</p>
 
 			<div
-				class="flex justify-center md:justify-start *:rounded-full *:p-4 fill-gray-700 bg-linear-0 mt-4 rounded-full gap-6 *:shadow-[-5px_-5px_10px_#FFFFFF88,_5px_5px_10px_#00000044] *:inset-shadow-[5px_5px_10px_-2px_#0000000A] *:hover:fill-cyan-700 *:transition-all *:duration-200 *:active:inset-shadow-[-5px_-5px_10px_#FFFFFF88,_5px_5px_10px_#00000044] *:active:shadow-none"
+				class="flex justify-center md:justify-start *:rounded-full *:p-4 fill-gray-700 bg-linear-0 mt-4 rounded-full gap-6 *:shadow-[-5px_-5px_10px_#FFFFFF88,5px_5px_10px_#00000044] *:inset-shadow-[5px_5px_10px_-2px_#0000000A] *:hover:fill-cyan-700 *:transition-all *:duration-200 *:active:inset-shadow-[-5px_-5px_10px_#FFFFFF88,5px_5px_10px_#00000044] *:active:shadow-none"
 			>
 				<a href="https://github.com/HanzFelix" aria-label="mail">
 					<GithubIcon class="w-8" />

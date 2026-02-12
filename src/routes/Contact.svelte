@@ -1,11 +1,11 @@
 <script lang="ts">
 	import type { HTMLAttributes } from 'svelte/elements';
 
-	let { ...rest }: HTMLAttributes<any> = $props();
+	let { ...rest }: HTMLAttributes<HTMLDivElement> = $props();
 </script>
 
 <section
-	class="flex flex-col justify-center px-4 bg-gradient-to-t from-[#e1e9ff] odd:to-gray-200 even:to-gray-100 to-50%"
+	class="flex flex-col justify-center px-4 bg-linear-to-t from-[#e1e9ff] odd:to-gray-200 even:to-gray-100 to-50%"
 	{...rest}
 >
 	<div class="container mx-auto px-4 pt-6">

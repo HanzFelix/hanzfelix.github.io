@@ -2,10 +2,10 @@
 	import { onMount } from 'svelte';
 
 	let { sections } = $props();
-	let activeLink = $state('');
+	let activeLink = $state('hello');
 
 	function handleScroll() {
-		for (const [id, section] of Object.entries(sections)) {
+		for (const id of Object.keys(sections)) {
 			const element = document.getElementById(id);
 			const sectionTop = element?.offsetTop ?? 0;
 			if (window.scrollY >= sectionTop - 200) {
@@ -39,7 +39,7 @@
 		class="hidden aspect-square h-full bg-linear-to-bl from-gray-700 from-50% to-transparent to-50% md:inline-block"
 	></div>
 	<div class="flex h-full w-full items-center justify-around bg-gray-700 md:w-auto">
-		{#each Object.entries(sections) as [key, value]}
+		{#each Object.entries(sections) as [key, value] (key)}
 			<a
 				href={`#${key}`}
 				class=" px-4 py-2 first:font-black {activeLink === key

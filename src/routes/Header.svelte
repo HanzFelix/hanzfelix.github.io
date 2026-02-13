@@ -23,15 +23,11 @@
 	}
 
 	onMount(() => {
-		window.addEventListener('scroll', handleScroll);
 		handleScroll();
-
-		return () => {
-			window.removeEventListener('scroll', handleScroll);
-		};
 	});
 </script>
 
+<svelte:window onscroll={handleScroll} />
 <nav
 	class="fixed top-0 right-0 z-50 flex h-12 w-screen justify-stretch border-t-8 border-gray-700 md:justify-end"
 >

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
-	import { onMount, onDestroy } from 'svelte';
+	import { onMount } from 'svelte';
 	import type { ProjectDetails } from '$lib/types';
 	import type { HTMLAttributes } from 'svelte/elements';
 
@@ -74,17 +74,6 @@
 		}
 	}
 
-	let _window: Window;
-	onMount(() => {
-		_window = window;
-		_window.addEventListener('resize', debounce(refreshLayout, 300), false); /* on resize */
-	});
-	onDestroy(() => {
-		if (_window) {
-			_window.removeEventListener('resize', debounce(refreshLayout, 300), false); /* on resize */
-		}
-	});
-
 	function debounce(func: () => void, delay: number) {
 		let timeoutId: number;
 		return function () {
@@ -116,6 +105,7 @@
 	});
 </script>
 
+<svelte:window onresize={debounce(refreshLayout, 300)} />
 <section class="flex" {...rest}>
 	<div class="container mx-auto px-4 py-12">
 		<h2 class="text-4xl px-4">Projects</h2>

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onDestroy, onMount } from 'svelte';
 	import { inview } from 'svelte-inview';
 	import type { HTMLAttributes } from 'svelte/elements';
 
@@ -81,16 +80,6 @@
 		resumeCanvas();
 	}
 
-	let _window: Window;
-	onMount(() => {
-		_window = window;
-		_window.addEventListener('resize', refreshCanvas, false); /* on resize */
-	});
-	onDestroy(() => {
-		if (_window) {
-			_window.removeEventListener('resize', refreshCanvas, false); /* on resize */
-		}
-	});
 	$effect.pre(() => {
 		if (canvas) {
 			refreshCanvas();
@@ -98,6 +87,7 @@
 	});
 </script>
 
+<svelte:window onresize={refreshCanvas} />
 <section class="flex items-center relative" {...rest}>
 	<div
 		class="absolute inline-flex -top-16 left-1/2 -translate-x-1/2 *:shadow-[-5px_-5px_10px_#FFFFFF88,5px_5px_10px_#00000044] *:inset-shadow-[5px_5px_10px_-2px_#0000000A] *:active:inset-shadow-[-5px_-5px_10px_#FFFFFF88,5px_5px_10px_#00000044] *:active:shadow-none"

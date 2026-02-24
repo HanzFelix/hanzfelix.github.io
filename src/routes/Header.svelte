@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	import { fly } from 'svelte/transition';
 
 	let { sections } = $props();
 	let activeLink = $state('hello');
@@ -30,6 +31,7 @@
 <svelte:window onscroll={handleScroll} />
 <nav
 	class="fixed top-0 right-0 z-50 flex h-12 w-screen justify-stretch border-t-8 border-gray-700 md:justify-end"
+	transition:fly={{ duration: 400, y: -100, opacity: 1 }}
 >
 	<div
 		class="hidden aspect-square h-full bg-linear-to-bl from-gray-700 from-50% to-transparent to-50% md:inline-block"

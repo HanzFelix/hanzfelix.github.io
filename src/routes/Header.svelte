@@ -13,14 +13,6 @@
 				activeLink = id;
 			}
 		}
-		/*
-		sections.forEach((section) => {
-			const element = document.getElementById(section.id);
-			const sectionTop = element?.offsetTop ?? 0;
-			if (window.scrollY >= sectionTop - 200) {
-				activeLink = section.id;
-			}
-		});*/
 	}
 
 	onMount(() => {
